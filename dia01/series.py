@@ -57,3 +57,4 @@ series_idades[3]
 series_idades.index = [40,30,50,10]
 series_idades.iloc[0]
 # %%
+# continuar aula 01 em 1:00:00
