@@ -1,5 +1,5 @@
-*.csv
-*.parquet
-*.xlsx
-*.db
-*.pptx
+#*.csv
+#*.parquet
+#*.xlsx
+#*.db
+#*.pptx
