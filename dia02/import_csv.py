@@ -55,3 +55,51 @@ condicao = df_costumers["Points"] == df_costumers['Points'].max()
 df_maior = df_costumers[condicao]
 df_maior['Name'].iloc[0]
 # %%
+# para combinação de condições lógicas, é necessário inserir cada uma entre parênteses
+condicao = (df_costumers['Points'] >= 1000) & (df_costumers['Points'] <= 2000)
+df_costumers[condicao]
+# %%
+# um mesmo objeto, neste caso uma lista, pode ter vários nomes atribuidos de modo que a alteração realizada usando um nome, reflete igualmente em todos
+a = [1,2,3,4]
+b = a
+print(a)
+print(b)
+
+b.append(5)
+print(a)
+print(b)
+# %%
+# para criar um novo objeto com os mesmos valores, uma das opções é usar o .copy()
+b = a.copy()
+# %%
+# caso seja necessário manipular uma base de dados filtrada, é importante realizar uma cópia, a fim de evitar auterar indevidamente a base de dados original
+condicao = (df_costumers['Points'] >= 1000) & (df_costumers['Points'] <= 2000)
+df_1000_2000 = df_costumers[condicao].copy()
+
+df_1000_2000['Points'] = df_1000_2000['Points'] + 1000
+df_1000_2000
+# %%
+# o quando inserido diretamente o nome da coluna entre colchetes o retorno do data frame é uma lista
+df_costumers['UUID']
+# %%
+# porem, quando inserido uma lista com o nome das colunas o retorno é um data frame com apenas as colunas indicadas
+df_costumers[['UUID']]
+# %%
+# para retornar mais de uma caluna, é necessário usar inserir uma lista com o nome das colunas
+df_costumers[['UUID','Name']]
+# %%
+# ordenando o nome das colunas em ordem alfabética
+colunas = df_costumers.columns.tolist()
+colunas.sort()
+
+df_costumers = df_costumers[colunas]
+df_costumers
+# %%
+# para renomear o nome das colunas (obs.: o .rename() cria um novo data frame com os novos nomes por isso, para alterar o data frame original, é neccessário reatribuir a ele mesmo como no exemplo acima)
+df_costumers = df_costumers.rename(columns= {'Name':'Nome', 'Points': 'Pontos'})
+df_costumers
+# %%
+# também é possível renomear usando o parâmetro inplace = true que renomea o data frame original (não necessitando reatribuir)
+df_costumers.rename(columns= {'UUID': 'ID'}, inplace=True)
+df_costumers
+# %%
