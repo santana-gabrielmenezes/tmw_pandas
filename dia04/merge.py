@@ -33,8 +33,8 @@ df_transacao
 # ON df_transacao.id_user = df_user.ID
 
 df_transacao.merge(df_user,
-                      how='left',
-                      left_on='id_user',
-                      right_on='id'
-                      )
+                   how='left',
+                   left_on='id_user',
+                   right_on='id'
+                   )
 # %%
