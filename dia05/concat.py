@@ -30,3 +30,16 @@ data_03 = {
 df_03 = pd.DataFrame(data_03)
 df_03
 # %%
+# o pd.concat() permite concatenar data frames tanto verticalmente (linha após linha)
+#   quanto horizontalmente (coluna após coluna como no exemplo abaixo)
+# o pd.concat() sempre aumentará a dimensionalidade do data frame final. caso o número
+#   de linhas ou colunas seja diferente ele sempre retornará um data frame com o mesmo
+#   o número de linhas ou colunas do maior deixando em branco os espaços vazios
+pd.concat([df_01,df_03], axis=1)
+# %%
+df_04 = pd.DataFrame(data_03).sort_values(['renda','sobrenome'], ascending=[False,True])
+# %%
+# independente dos valores, o pd.concat() realizará a concatenação de acordo com o ídice
+#   mesmo que este esteja desordenado como no df_04
+pd.concat([df_01,df_04], axis=1)
+# %%
